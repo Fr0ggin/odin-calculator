@@ -15,9 +15,7 @@ let num1 = document.querySelector(".display_num1")
 let num2 = document.querySelector(".display_num2")
 let operator = document.querySelector(".display_operator")
 
-num1.textContent = ""
-num2.textContent = ""
-operator.textContent = ""
+clear(num1, num2, operator)
 result = ""
 const operatorlist = ["add", "subtract", "multiply", "divide", "clear", "="]
 
@@ -51,16 +49,16 @@ for(each of allButtons){
             }
             else if(e.target.className === "="){
                 let result = operate(num1.textContent, num2.textContent, operator.textContent)
-                num1.textContent = []
-                num2.textContent = []
-                operator.textContent = result
+                num1.textContent = result
+                num2.textContent = ""
+                operator.textContent = ""
             }        
             else if(operator.textContent === ""){
                 storeOperator(e.target.textContent)
             }
                         
             else if(operator.textContent != ""){
-                console.log("This is the second operator, we post result here")
+                console.log("Error")
                 storeOperator(e.target.textContent)
             }
         }
