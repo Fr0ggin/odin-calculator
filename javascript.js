@@ -7,6 +7,7 @@ const clear = ((num1, num2, operator) => {
     num1.textContent = ""
     num2.textContent = ""
     operator.textContent = ""
+    display_zero.textContent = "0"
 })
 
 
@@ -14,6 +15,7 @@ const clear = ((num1, num2, operator) => {
 let num1 = document.querySelector(".display_num1")
 let num2 = document.querySelector(".display_num2")
 let operator = document.querySelector(".display_operator")
+let display_zero = document.querySelector(".display_zero")
 
 clear(num1, num2, operator)
 result = ""
@@ -38,32 +40,44 @@ const operate = ((num1, num2, operator) =>{
     }
 })
 
+const showResult = (num1, num2, operator) =>{
+    result = operate(num1.textContent, num2.textContent, operator.textContent)
+    if(isNaN(result)){result = "Numnut"}
+    num1.textContent = result
+    num2.textContent = ""
+    operator.textContent = ""
+
+}
 const allButtons = document.querySelectorAll("button")
 for(each of allButtons){
     each.addEventListener("click", (e) => {
+        if(result === "Numnut"){
+            clear(num1, num2, operator)
+            result = 0
+                
+        }
         
-        if(operatorlist.includes(e.target.className)){
+        else if(operatorlist.includes(e.target.className)){
             if(e.target.className === "clear"){
                 clear(num1, num2, operator)
+                display_zero.textContent = "0"
+            }           
 
-            }
             else if(e.target.className === "="){
-                let result = operate(num1.textContent, num2.textContent, operator.textContent)
-                num1.textContent = result
-                num2.textContent = ""
-                operator.textContent = ""
+                showResult(num1, num2, operator)
             }        
             else if(operator.textContent === ""){
                 storeOperator(e.target.textContent)
             }
-                        
+            //If a second operator is pressed before =, it should act as =
             else if(operator.textContent != ""){
-                console.log("Error")
+                showResult(num1, num2, operator)
                 storeOperator(e.target.textContent)
             }
         }
 
         else if(operator.textContent === ""){
+            display_zero.textContent = ""
             storeInNum(num1, e.target.textContent)
         }
         else{
@@ -75,4 +89,3 @@ for(each of allButtons){
     })
 
 }
-// create a function that stores the clicked button in num1

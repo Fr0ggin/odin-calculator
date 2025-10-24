@@ -18,12 +18,13 @@
 
 /* Evrything concerning the display */
 .display{
-    justify-content: center;
+    justify-content: end;
+    min-height: 20px;
 
 }
 
 .display div{
-    margin: 5px;
+    margin: 0px;
     font-weight: 700;
 }
 
