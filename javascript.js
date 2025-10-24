@@ -19,6 +19,10 @@ num2.textContent = "2"
 operator.textContent = ""
 const operatorlist = ["add", "substract", "multiply", "divide"]
 
+const storeInNum1 = (input) => num1.textContent += input
+const storeInNum2 = (input) => num1.textContent += input
+const storeOperator = ((input) => {operator.textContent = input})
+
 
 // function that takes an operator and then calls one of the basic math functions
 const operate = (num1, num2, operator) => operator(num1, num2);
@@ -27,21 +31,25 @@ const allButtons = document.querySelectorAll("button")
 for(each of allButtons){
     each.addEventListener("click", (e) => {
         console.log("click") // Test to see if clicks are registered, it does!
+        console.log(e.target)
         num1.textContent += "1" // Test to see if clicks add, they do!
 
-        if(operatorlist.includes(each)){
+        if(operatorlist.includes(e.target.className)){
             console.log("you clicked an operator")
+            if(e.target.className === "clear"){
+                //Function that clears all values
+            }
+            else if(e.target.className === "="){
+                // function that displays the result
+            }
+            else{
+                storeOperator(e.target.className)
+            }
         }
 
 
- 
-
-        // store numbers on num1 until an operator is pressed
 
     })
 
 }
 // create a function that stores the clicked button in num1
-const storeInNum1 = () => {
-
-}
