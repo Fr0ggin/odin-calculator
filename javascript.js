@@ -41,11 +41,17 @@ const operate = ((num1, num2, operator) =>{
 })
 
 const showResult = (num1, num2, operator) =>{
+    // this ensures when pressing double operators nothing get parsed
+    if(num2.textContent == ""){return}
     result = operate(num1.textContent, num2.textContent, operator.textContent)
-    if(isNaN(result)){result = "Numnut"}
+    
+    //purely here for funny message on impossible operation (like 0/0 or 2/0)
+    if(isNaN(result) || result == "Infinity"){result = "Numnut"}
     num1.textContent = result
     num2.textContent = ""
     operator.textContent = ""
+
+    
 
 }
 const allButtons = document.querySelectorAll("button")
@@ -53,10 +59,9 @@ for(each of allButtons){
     each.addEventListener("click", (e) => {
         if(result === "Numnut"){
             clear(num1, num2, operator)
-            result = 0
-                
+            result = 0 
         }
-        
+
         else if(operatorlist.includes(e.target.className)){
             if(e.target.className === "clear"){
                 clear(num1, num2, operator)
@@ -71,6 +76,7 @@ for(each of allButtons){
             }
             //If a second operator is pressed before =, it should act as =
             else if(operator.textContent != ""){
+                if(operator.textContent)
                 showResult(num1, num2, operator)
                 storeOperator(e.target.textContent)
             }
