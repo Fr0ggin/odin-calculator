@@ -17,10 +17,9 @@ let operator= document.querySelector(".display_operator")
 num1.textContent = "6"
 num2.textContent = "2"
 operator.textContent = ""
-const operatorlist = ["add", "substract", "multiply", "divide"]
+const operatorlist = ["+", "-", "*", "/"]
 
-const storeInNum1 = (input) => num1.textContent += input
-const storeInNum2 = (input) => num1.textContent += input
+const storeInNum = (num, input) => num.textContent += input
 const storeOperator = ((input) => {operator.textContent = input})
 
 
@@ -30,9 +29,9 @@ const operate = (num1, num2, operator) => operator(num1, num2);
 const allButtons = document.querySelectorAll("button")
 for(each of allButtons){
     each.addEventListener("click", (e) => {
-        console.log("click") // Test to see if clicks are registered, it does!
+        // console.log("click") // Test to see if clicks are registered, it does!
         console.log(e.target)
-        num1.textContent += "1" // Test to see if clicks add, they do!
+        // num1.textContent += "1" // Test to see if clicks add, they do!
 
         if(operatorlist.includes(e.target.className)){
             console.log("you clicked an operator")
@@ -42,9 +41,16 @@ for(each of allButtons){
             else if(e.target.className === "="){
                 // function that displays the result
             }
-            else{
+            else if(operator.textContent =! ""){
                 storeOperator(e.target.className)
             }
+        }
+
+        else if(operator.textContent === ""){
+            storeInNum(num1, e.target.textContent)
+        }
+        else{
+            storeInNum(num2, e.target.textContent)
         }
 
 
