@@ -1,0 +1,40 @@
+*{
+    box-sizing: border-box;
+}
+.wrapper,
+.display,
+.buttons_container,
+.operators_container,
+.numbers_container{
+    display: flex;
+}
+
+.wrapper{
+    flex-direction: column;
+    width: 279px;
+    length: 515px;
+    border: 2px solid grey;
+}
+
+.display{
+    justify-content: center;
+
+}
+
+.buttons_container{
+}
+
+.operators_container{
+    flex-direction: column;
+    flex: 0 0 70px;
+}
+
+.numbers_container{
+    flex-wrap: wrap;
+    flex:1;
+
+}
+.numbers_container button{
+    flex: 1 0 calc(100% /3);
+    min-width: 0;
+}
