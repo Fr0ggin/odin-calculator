@@ -4,5 +4,14 @@ const subtract = (num1, num2) => num1 - num2;
 const multiply = (num1, num2) => num1 * num2;
 const divide = (num1, num2) => num1 / num2;
 
-console.log(add(6,2))
-console.log(divide(6,2))
+// variables used for displaying the numbers and operator on display
+let num1 = 0;
+let num2 = 0;
+let operator = ""
+
+// function that takes an operator and then calls one of the basic math functions
+const operate = (num1, num2, operator) => {
+    return operator(num1, num2)
+}
+
+operate(6, 2, divide)
