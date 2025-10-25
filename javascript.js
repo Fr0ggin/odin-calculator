@@ -26,8 +26,15 @@ const storeInNum = ((num, input) => {
     if(result != "" && operator.textContent === ""){
         num.textContent = ""
         result = ""
+        num.textContent += input
     }
+    else if(input === "." && num.textContent.includes(input)){
+        return
+    }
+    else{
     num.textContent += input
+    }
+
     })
 
 
