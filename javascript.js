@@ -27,6 +27,7 @@ const storeInNum = ((num, input) => {
         num.textContent = num.textContent.slice(0, -1)
     }
     else if(input === "+/-"){
+        if (num.textContent === "."){return}
         num.textContent = -num.textContent
     }
     // statement to ensure you dont falsy add nums after result
