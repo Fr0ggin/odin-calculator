@@ -21,18 +21,22 @@ clear(num1, num2, operator)
 result = ""
 const operatorlist = ["add", "subtract", "multiply", "divide", "clear", "="]
 
-// if statement to ensure you dont falsy add nums after result
+
 const storeInNum = ((num, input) => {
-    if(result != "" && operator.textContent === ""){
+    if(input === "DEL"){
+        num.textContent = num.textContent.slice(0, -1)
+    }
+    // statement to ensure you dont falsy add nums after result
+    else if(result != "" && operator.textContent === ""){
         num.textContent = ""
         result = ""
         num.textContent += input
-    }
+    } // statement to ensure no double "." in num1 or num2
     else if(input === "." && num.textContent.includes(input)){
         return
     }
     else{
-    num.textContent += input
+        num.textContent += input
     }
 
     })
