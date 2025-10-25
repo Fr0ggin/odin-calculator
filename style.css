@@ -3,6 +3,7 @@
 }
 .wrapper,
 .display,
+.func_container,
 .buttons_container,
 .operators_container,
 .numbers_container{
@@ -20,6 +21,7 @@
 .display{
     justify-content: end;
     min-height: 20px;
+    border: 1px solid grey;
 
 }
 
@@ -29,7 +31,8 @@
 }
 
 /* Evrything concerning the button-layout */
-.buttons_container{
+.clear{
+    flex: 1;
 }
 
 .operators_container{
